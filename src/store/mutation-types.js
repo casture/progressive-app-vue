@@ -1,0 +1,3 @@
+export const ADD_CARD = 'ADD_CARD'
+export const OPEN_CITY_DIALOG = 'OPEN_CITY_DIALOG'
+export const CLOSE_CITY_DIALOG = 'CLOSE_CITY_DIALOG'
