@@ -10,11 +10,7 @@
 
         <my-dialog></my-dialog>  
 
-        <div class="loader">
-            <svg viewBox="0 0 32 32" width="32" height="32">
-              <circle id="ud811Spinner" cx="16" cy="16" r="14" fill="none"></circle>
-            </svg>
-        </div>
+        <my-spinner></my-spinner>
 
     </div>
 
@@ -25,6 +21,7 @@
 import MyHeader from './components/Header'
 import Card from './components/Card'
 import MyDialog from './components/Dialog'
+import MySpinner from './components/Spinner'
 
 export default {
   name: 'app',
@@ -32,6 +29,7 @@ export default {
     MyHeader,
     Card,
     MyDialog,
+    MySpinner,
   },
   data () {
     return {
@@ -91,65 +89,6 @@ body {
       -ms-flex-line-pack: stretch;
           align-content: stretch;
   background: #ececec; }
-
-.loader {
-  left: 50%;
-  top: 50%;
-  position: fixed;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
-  .loader #ud811Spinner {
-    box-sizing: border-box;
-    stroke: #673AB7;
-    stroke-width: 3px;
-    -webkit-transform-origin: 50%;
-            transform-origin: 50%;
-    -webkit-animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite;
-            animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite; }
-
-@-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
-  to {
-    -webkit-transform: rotate(450deg);
-            transform: rotate(450deg); } }
-
-@keyframes rotate {
-  from {
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
-  to {
-    -webkit-transform: rotate(450deg);
-            transform: rotate(450deg); } }
-
-@-webkit-keyframes line {
-  0% {
-    stroke-dasharray: 2, 85.964;
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
-  50% {
-    stroke-dasharray: 65.973, 21.9911;
-    stroke-dashoffset: 0; }
-  100% {
-    stroke-dasharray: 2, 85.964;
-    stroke-dashoffset: -65.973;
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg); } }
-
-@keyframes line {
-  0% {
-    stroke-dasharray: 2, 85.964;
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
-  50% {
-    stroke-dasharray: 65.973, 21.9911;
-    stroke-dashoffset: 0; }
-  100% {
-    stroke-dasharray: 2, 85.964;
-    stroke-dashoffset: -65.973;
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg); } }
 
 .main {
   padding-top: 60px;

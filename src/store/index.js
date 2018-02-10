@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 const state = {
     dialogVisible: false,
+    spinnerVisible: false,
     isLoading: true,
     cards: [],
     selectedCities: [],
@@ -26,6 +27,9 @@ const mutations = {
     },
     [types.CLOSE_CITY_DIALOG] (state, card) {
         state.dialogVisible = false;
+    },
+    [types.TOGGLE_SPINNER] (state, status) {
+        state.spinnerVisible = status;
     },
 }
 

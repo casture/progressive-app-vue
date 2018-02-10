@@ -27,12 +27,24 @@ const cardTemplate = {
     }
 }
 
+const cities = {
+    'newyork': 'New York, NY',
+    'austin': 'Austin, TX',
+    'boston': 'Bostan, MA',
+    'chicago': 'Chicago, IL',
+    'portland': 'Portland, OR',
+    'sanfrancisco': 'San Francisco, CA',
+    'seattle': 'Seattle, WA'
+}
+
 
 // adds a card (async)
-export const addCard = ({commit}) => {
+export const addCard = ({commit}, name) => {
+    commit(types.TOGGLE_SPINNER, true)
     return new Promise(resolve => {
         setTimeout(() => {
-            commit(types.ADD_CARD, Object.assign({}, cardTemplate))
+            commit(types.ADD_CARD, Object.assign({}, cardTemplate, {key:name,label:cities[name]}))
+            commit(types.TOGGLE_SPINNER, false)
             resolve()
         }, 1000)
     })

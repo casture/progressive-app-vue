@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 
 .dialog-container {
   background: rgba(0, 0, 0, 0.57);
@@ -33,15 +33,24 @@
   transition: transform 0.333s cubic-bezier(0, 0, 0.21, 1) 0.05s, -webkit-transform 0.333s cubic-bezier(0, 0, 0.21, 1) 0.05s;
   padding: 24px; }
 
+button {
+  border-style: none;
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  min-width: 75px; }
+
 </style>
 
 <template>
   
-    <div class="dialog-container" :class="{ 'dialog-container--visible': visible }">
-          <div class="dialog">
+    <div class="dialog-container" :class="{ 'dialog-container--visible': visible }" @click="closeCityDialog()">
+          <div class="dialog" @click.stop>
             <div class="dialog-title">Add new city</div>
             <div class="dialog-body">
-                <select id="selectCityToAdd">
+                <select ref="selectedCity">
                   <option value="austin">Austin, TX</option>
                   <option value="boston">Boston, MA</option>
                   <option value="chicago">Chicago, IL</option>
@@ -51,8 +60,8 @@
                 </select>
             </div>
             <div class="dialog-buttons">
-                <button id="butAddCity" class="button">Add</button>
-                <button id="butAddCancel" class="button" @click="closeCityDialog()">Cancel</button>
+                <button ref="add" class="button" @click="addCity()">Add</button>
+                <button ref="cancel" class="button" @click="closeCityDialog()">Cancel</button>
             </div>
         </div>
     </div>
@@ -71,6 +80,12 @@ export default {
         closeCityDialog() {
             this.$store.dispatch('closeCityDialog').then(() => {
                 console.log('dialog closed')
+            })
+        },
+
+        addCity() {
+            this.$store.dispatch('addCard', this.$refs.selectedCity.value).then(() => {
+                this.closeCityDialog();
             })
         }
     }
